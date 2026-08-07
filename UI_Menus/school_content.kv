@@ -1,0 +1,14 @@
+<ClassContentScreen@BaseScreen>:
+    #back arrow
+    BackArrow:
+        on_release: app.root.current = 'school'
+
+    Posts:
+        id: schlPosts
+
+    Button:
+        on_release: app.root.current = 'community_create_post'
+        text: "Post"
+        size_hint_y: None
+        height: 60
+        pos: 0, 60

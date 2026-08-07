@@ -1,0 +1,44 @@
+<MessageScreen@BaseScreen>:
+    # Back arrow button
+    Button:
+        on_release: app.root.current = 'contacts'
+        background_normal: 'Assets/BackArrow.png'
+        size_hint: None, None
+        size: 50, 50
+        pos_hint: {'right': 0.10, 'top': 0.95}
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Ellipse:
+                pos: self.pos
+                size: self.size
+
+    FloatLayout:
+        ScrollView:
+            id: messages_layout
+            size_hint: 1, 0.65
+            pos_hint: {'top': 0.8, 'x': 0}
+
+            BoxLayout:
+                id: messages_box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+                padding: [10, 10, 10, 10]
+
+        TextInput:
+            id: message_input
+            size_hint: 0.8, None
+            height: '40dp'
+            pos_hint: {'top': 0.175, 'center_x': 0.43}
+            hint_text: 'Type your message here...'
+            multiline: False  # Disable multiline input
+            on_text_validate: root.send_message()
+
+        Button:
+            text: 'Send'
+            size_hint: None, None
+            size: '120dp', '40dp'
+            pos_hint: {'center_x': 0.92, 'top': 0.175}
+            on_release: root.send_message()

@@ -1,0 +1,21 @@
+<LibraryScreen>:
+    FloatLayout:
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.8, 0.5
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            id: library_btn         #[Should be initilizing button but not sure why not]
+
+            Label:      #[Error Message]
+                id: err_message
+                text: "text"        #[Remove text when done]
+                color: (1, 0, 0, 1)
+                size_hint_y: None
+                height: '30dp'
+
+            Label:      #[Article]
+                id: article
+                text: ""
+                size_hint_y: None
+                height: '30dp'

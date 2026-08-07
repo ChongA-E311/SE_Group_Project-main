@@ -1,0 +1,35 @@
+<CommunityCreatePostScreen>:
+    name: 'community_create_post'
+
+    BackArrow:
+        on_release: root.decide_post_return()
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        # Back Arrow Button
+
+        Label:
+            text: "Create a Post"
+            font_size: 24
+            bold: True
+            size_hint_y: None
+            height: 40
+
+        ScrollView:
+            size_hint: (1, 0.6)
+            TextInput:
+                id: post_input
+                hint_text: "Write your post here..."
+                size_hint_y: None
+                height: 300
+                multiline: True
+
+    Button:
+        text: "Post"
+        size_hint_y: None
+        height: 60
+        pos: 0, 60
+        on_release: root.create_post(post_input.text)

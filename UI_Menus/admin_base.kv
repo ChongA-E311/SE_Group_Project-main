@@ -1,0 +1,32 @@
+<AdminBaseScreen>:
+    FloatLayout:
+        # Main content area - takes up full space but leaves room for nav bar
+        ScreenManager:
+            id: content_area
+            size_hint: 1, 1
+            pos_hint: {'top': 1}
+
+        BoxLayout:
+            id: nav_bar
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '50dp'
+            pos_hint: {'bottom': 1}
+            canvas.before:
+                Color:
+                    rgba: 0.2, 0.2, 0.2, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            DashboardButton:
+                id: dashboard_button
+                text: 'Dashboard'
+                size_hint_x: 0.5 if org_button.opacity else 1
+
+            OrgButton:
+                id: org_button
+                text: 'Edit Organization'
+                opacity: 0
+                disabled: True
+                size_hint_x: 0.5

@@ -1,0 +1,27 @@
+<AccountPage@BaseScreen>:
+    
+    FloatLayout:
+
+        #Buttons
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: 0.8, 0.5
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            #height: '50dp'
+
+            Label:
+                text: "Account Page"
+                font_size: '24sp'
+
+            Button:
+                text: 'LogOut'
+                on_release: root.log_out()
+
+            ProfilePicButton:
+                id: profile_pic
+
+            Label:
+                text: 'Change Profile Picture'
+
+            ThemeButton:
+                text: 'Change Theme'

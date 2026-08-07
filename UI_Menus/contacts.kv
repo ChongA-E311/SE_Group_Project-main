@@ -1,0 +1,35 @@
+<ContactsScreen@BaseScreen>:
+    FloatLayout:
+        TextInput:
+            id: new_user_input
+            size_hint: None, None
+            width: 500  # Longer width for the text input
+            height: 40
+            pos_hint: {'top': 0.92, 'right': 0.65}
+            hint_text: 'Enter username to message'
+            multiline: False
+
+        Button:
+            text: 'New Contact'
+            size_hint: None, None
+            size: 150, 40
+            pos_hint: {'top': 0.92, 'right': 0.85}
+            on_release: root.start_messaging()
+
+        Label:
+            id: user_error_message
+            color: (1, 0, 0, 1)
+            size_hint_y: None
+            height: '30dp'
+            pos_hint: {'top': 0.85, 'center_x': 0.35}
+            text: ''
+
+        ScrollView:
+            id: contacts_scroll
+            size_hint: 1, 0.6
+            pos_hint: {'top': 0.75, 'x': 0}
+            BoxLayout:
+                id: contacts_layout
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height

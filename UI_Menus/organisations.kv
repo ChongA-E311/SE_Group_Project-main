@@ -1,0 +1,21 @@
+<OrganisationsScreen@BaseScreen>:
+    FloatLayout:
+        # Title for the screen
+        Label:
+            text: 'List of Organisations'
+            font_size: 20
+            size_hint_y: None
+            height: 40
+            pos_hint: {'center_x': 0.5, 'top': 0.85}
+
+        ScrollView:
+            size_hint: (0.8, 0.5)
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+            BoxLayout:
+                id: org_layout
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 20
+                padding: 5

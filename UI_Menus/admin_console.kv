@@ -1,0 +1,149 @@
+<TextInputPopup>: # used for editing popup type
+    title: "Popup"
+    size_hint: None, None
+    size: 400, 400
+    auto_dismiss: False
+
+    BoxLayout:
+        orientation: "vertical"
+        TextInput:
+            id: txtinput
+            text: root.obj_text
+        Button:
+            size_hint: 1, 0.2
+            text: "Save Changes"
+            on_release:
+                root.obj.update_changes(root.obj.index, txtinput.text)
+                root.dismiss()
+        Button:
+            size_hint: 1, 0.2
+            text: "Cancel Changes"
+            on_release: root.dismiss()
+
+<OrgInputPopup>: # Used for adding new org popup type
+    title: "AddOrgPopup"
+    size_hint: None, None
+    size: 400, 400
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    auto_dismiss: False
+
+    BoxLayout:
+        orientation: "vertical"
+
+        TextInput:
+            id: idinput
+            hint_text: "Enter Organization New ID"
+        TextInput:
+            id: nameinput
+            hint_text: "Enter New Organization Name"
+        TextInput:
+            id: typeinput
+            hint_text: "Enter New Organization Type"
+        Button:
+            size_hint: 1, 0.2
+            text: "Confirm"
+            on_release: root.on_confirm(self)
+        Button:
+            size_hint: 1, 0.2
+            text: "Cancel"
+            on_release: root.dismiss()
+
+<SelectableButton>:
+    # Draw a background to indicate selection
+    canvas.before:
+        Color:
+            rgba: (.0, 0.9, .1, .3) if self.selected else (0, 0, 0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<UsersConsole>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: 0, 0, 0, '60dp'
+
+        GridLayout:
+            size_hint: 1, None
+            size_hint_y: None
+            height: 25
+            cols: 6
+
+            Label:
+                text: "ID"
+            Label:
+                text: "Username"
+            Label:
+                text: "User Type"
+            Label:
+                text: "Org ID"
+            Label:
+                text: "Class"
+            Label:
+                text: "Password"
+
+        BoxLayout:
+            RecycleView:
+                id: rec_view
+                size_hint_y:  0.8
+                pos_hint: {'top': 0.95}
+                viewclass: 'UserSelectableButton'
+                data: [{'text': str(x), 'row_id': int(i / 5), 'col_id': i % 5} for i, x in enumerate(root.data_items)]
+                #data: root.data_items
+                SelectableRecycleGridLayout:
+                    cols: 6
+                    default_size: None, dp(26)
+                    default_size_hint: 1, None
+                    size_hint_y: None
+                    height: self.minimum_height
+                    orientation: 'lr-tb'
+                    multiselect: True
+                    touch_multiselect: True
+
+        BoxLayout:
+            orientation: "horizontal"
+            size_hint_y: None
+            height: 30
+            Button:
+                text: "Generate Codes"
+                on_release: root.show_code_popup()
+
+
+
+
+
+<OrgConsole>:
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 10
+        padding: 0, 0, 0, '60dp'  # Add bottom padding
+
+        GridLayout:
+            size_hint: 1, None
+            size_hint_y: None
+            height: 25
+            cols: 3
+
+            Label:
+                text: "Organization ID"
+            Label:
+                text: "Organization Names"
+            Label:
+                text: "organization Type"
+
+        BoxLayout:
+            orientation: "vertical"
+            RecycleView:
+                id: rec_view
+                size_hint_y:  0.8
+                pos_hint: {'top': 0.95}
+                viewclass: 'OrgSelectableButton'
+                data: [{'text': str(x), 'row_id': int(i / 3), 'col_id': i % 3} for i, x in enumerate(root.data_items)]
+                SelectableRecycleGridLayout:
+                    cols: 3
+                    default_size: None, dp(26)
+                    default_size_hint: 1, None
+                    size_hint_y: 0.8
+                    height: self.minimum_height
+                    orientation: 'lr-tb'
+                    multiselect: True
+                    touch_multiselect: True

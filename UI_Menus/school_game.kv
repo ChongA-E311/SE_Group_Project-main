@@ -1,0 +1,17 @@
+<SchoolGameScreen@BaseScreen>:
+    #back arrow
+    Button:
+        on_release: app.root.current = 'school'
+        background_normal: 'Assets/BackArrow.png'
+        size_hint: None, None
+        size: 50, 50
+        pos_hint: {'right': 0.10, 'top': 0.95}
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Ellipse:
+                pos: self.pos
+                size: self.size
+    Label:
+        text: "Game Screen"
+        pos_hint: {'center_x': 0.5, 'center_y': 0.6}

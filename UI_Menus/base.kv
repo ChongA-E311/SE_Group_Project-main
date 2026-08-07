@@ -1,0 +1,29 @@
+<BaseScreen>:
+    FloatLayout:
+        # Circular Profile Picture Placeholder
+        ProfilePicButton:
+            id: profile_pic
+            source: 'Assets/ProfilePictures/Placeholder.png'
+            size_hint: None, None
+            size: 75, 75
+            pos_hint: {'right': 0.95, 'top': 0.95}
+
+        # Bottom navigation bar
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '50dp'
+            pos_hint: {'x': 0, 'y': 0}
+            HomeButton:
+                text: 'Home'
+            Button:
+                text: 'Organisations'
+                on_release: app.root.current = 'organisations'
+            Button:
+                text: 'Report'
+                on_release: app.root.current = 'report'
+            Button:
+                text: 'Libraries'
+                on_release: app.root.current = 'library'
+            MessageButton:
+                text: 'Messages'

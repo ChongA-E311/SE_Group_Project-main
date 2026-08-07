@@ -1,0 +1,32 @@
+<ReportScreen>:
+    FloatLayout:
+        canvas.before:
+            Color:
+                rgba: 0.2, 0.2, 0.2, 1  # A dark gray background
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Reports Page"
+            font_size: '30sp'  # Adjust font size for better visibility
+            bold: True         # Make the text bold for emphasis
+            color: 1, 1, 1, 1  # White text
+            pos_hint: {"center_x": 0.5, "center_y": 0.75}  # Positioned near the top-middle
+
+        Button:
+            text: "+"
+            size_hint: None, None
+            size: 100, 100
+            pos_hint: {"center_x": 0.5, "center_y": 0.6}  # Slightly lower than the label
+            background_normal: ''
+            background_color: 0, 0.5, 1, 1
+            on_release: root.open_popup()
+
+        Label:
+            text: "Upload File Here"
+            size_hint: None, None
+            size: self.texture_size
+            pos_hint: {"center_x": 0.5, "center_y": 0.45}  # Below the button
+            color: 1, 1, 1, 1  # White text
+            font_size: '20sp'

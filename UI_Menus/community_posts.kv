@@ -1,0 +1,37 @@
+<CommunityPostsScreen@BaseScreen>:
+    #back arrow
+    BackArrow:
+        on_release: app.root.current = 'organisations'
+        background_normal: 'Assets/BackArrow.png'
+        size_hint: None, None
+        size: 50, 50
+        pos_hint: {'right': 0.10, 'top': 0.95}
+        canvas.before:
+            Color:
+                rgba: 1, 1, 1, 1
+            Ellipse:
+                pos: self.pos
+                size: self.size
+    FloatLayout:
+        # Circular Profile Picture Placeholder
+        Image:
+            source: ''
+            size_hint: None, None
+            size: 50, 50
+            pos_hint: {'right': 0.95, 'top': 0.95}
+            canvas.before:
+                Color:
+                    rgba: 1, 1, 1, 1
+                Ellipse:
+                    pos: self.pos
+                    size: self.size
+
+    Posts:
+        id: commPosts
+
+    Button:
+        on_release: app.root.current = 'community_create_post'
+        text: "Post"
+        size_hint_y: None
+        height: 60
+        pos: 0, 60

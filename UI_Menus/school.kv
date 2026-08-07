@@ -1,0 +1,15 @@
+<SchoolScreen@BaseScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint: 0.8, 0.5
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        spacing: 30
+        Button:
+            text: 'Class Content'
+            on_release: app.root.current = 'school_content'
+        Button:
+            text: 'Assignments'
+            on_release: app.root.current = 'school_assignments'
+        Button:
+            text: 'Game'
+            on_release: app.root.current = 'school_game'
